@@ -25,27 +25,27 @@ public class WebSecurityConfig {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(auth -> {
-                        auth.requestMatchers(antMatcher("/css/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/js/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/images/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/fonts/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/webjars/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/")).permitAll();
-                        auth.requestMatchers(antMatcher("/rss/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/register/**")).permitAll();
-                        auth.requestMatchers(antMatcher("/posts/**")).permitAll();
-                        auth.requestMatchers(PathRequest.toH2Console()).permitAll();
-                        auth.anyRequest().authenticated();
+                    auth.requestMatchers(antMatcher("/css/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/js/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/images/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/fonts/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/webjars/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/")).permitAll();
+                    auth.requestMatchers(antMatcher("/rss/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/register/**")).permitAll();
+                    auth.requestMatchers(antMatcher("/posts/**")).permitAll();
+                    auth.requestMatchers(PathRequest.toH2Console()).permitAll();
+                    auth.anyRequest().authenticated();
                 })
 
                 .formLogin(form -> form
-                    .loginPage("/login")
-                    .loginProcessingUrl("/login")
-                    .usernameParameter("email")
-                    .passwordParameter("password")
-                    .defaultSuccessUrl("/")
-                    .failureUrl("/login?error")
-                    .permitAll()
+                        .loginPage("/login")
+                        .loginProcessingUrl("/login")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        .defaultSuccessUrl("/")
+                        .failureUrl("/login?error")
+                        .permitAll()
                 );
 
 

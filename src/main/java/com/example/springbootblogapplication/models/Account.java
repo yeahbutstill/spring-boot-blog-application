@@ -1,9 +1,8 @@
 package com.example.springbootblogapplication.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.*;
-
 import jakarta.persistence.*;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;

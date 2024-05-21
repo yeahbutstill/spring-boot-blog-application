@@ -2,28 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Blog :: Update Post</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" th:rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
     <a th:href="@{/}">Home</a>
     <form action="#"
-          th:action="@{'/posts/{id}'(id=${post.id})}"
-          th:object="${post}"
           enctype="multipart/form-data"
-          method="post">
-        <input type="hidden" th:field="*{createdAt}" />
+          method="post"
+          th:action="@{'/posts/{id}'(id=${post.id})}"
+          th:object="${post}">
+        <input th:field="*{createdAt}" type="hidden"/>
         <h2>Update Post</h2>
-        <img th:src="@{'/images/' + *{imageFilePath}}" height="200px" class="img-fluid" />
+        <img class="img-fluid" height="200px" th:src="@{'/images/' + *{imageFilePath}}"/>
         <div>
-            <input id="input-file" type="file" name="file" class="btn btn-outline-info" accept="image/png, image/jpeg, image/jpg, image/bmp" />
+            <input accept="image/png, image/jpeg, image/jpg, image/bmp" class="btn btn-outline-info" id="input-file"
+                   name="file"
+                   type="file"/>
         </div>
         <div>
             <label for="new-post-title">Title</label>
-            <input id="new-post-title" type="text" th:field="*{title}" placeholder="Title"/>
+            <input id="new-post-title" placeholder="Title" th:field="*{title}" type="text"/>
         </div>
         <div>
             <label for="new-post-body">Body</label>

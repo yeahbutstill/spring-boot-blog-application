@@ -1,9 +1,8 @@
 package com.example.springbootblogapplication.models;
 
+import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 

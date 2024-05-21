@@ -1,23 +1,23 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1" name="viewport">
     <title>Blog :: Home</title>
-    <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" />
+    <link th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}" th:rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
     <h1>Spring Boot Blog Application</h1>
-    <hr />
+    <hr/>
     <ul>
         <li><a th:href="@{/posts/new}">New Post</a></li>
     </ul>
     <div class="posts-container">
         <div class="post" th:each="post : ${posts}">
-            <img th:src="@{'/images/' + ${post.imageFilePath}}" height="200px" class="img-fluid" />
+            <img class="img-fluid" height="200px" th:src="@{'/images/' + ${post.imageFilePath}}"/>
             <h2><a th:href="@{'/posts/' + ${post.id}}" th:text="${post.title}">Title</a></h2>
             <h5 th:text="'Written by ' + ${post.account.firstName}">Account First Name</h5>
             <h5 th:text="'Published at ' + ${post.createdAt}">Created At</h5>
@@ -26,14 +26,14 @@
             <br>
         </div>
     </div>
-    <hr />
+    <hr/>
     <ul sec:authorize="!isAuthenticated()">
         <li><a th:href="@{/register}">Register</a></li>
         <li><a th:href="@{/login}">Login</a></li>
     </ul>
     <div sec:authorize="isAuthenticated()">
-        <form th:action="@{/logout}"
-              method="POST">
+        <form method="POST"
+              th:action="@{/logout}">
             <div>
                 <label>Hi, <span sec:authentication="name">Username</span></label>
             </div>
